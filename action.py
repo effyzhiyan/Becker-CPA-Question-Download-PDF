@@ -1,8 +1,23 @@
-import streamlit as st
-import os
+# === imports === 
+# loads the Streamlit Module to create a web UI 
+import streamlit as st 
+
+# os: Handles file paths and directory checks
+# time: Use for delays (sleep) 
+# tempfile: creates a temporary directoory to store screenshots 
+import os 
 import time
 import tempfile
+
+# PIL (Pillow): process and merge images into PDF
 from PIL import Image
+
+# Selenium: automates browser interaction
+# by: helps locate elements by attributes (e.g. name, CSS selector)
+# options: customize browser behavior ( like headless mode) 
+# webdriverwait + EC: adds wait to make sure elements load before interacting
+# Exceptions: catches issues like elements not loading or not found 
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
@@ -10,20 +25,24 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
-# === Streamlit UI ===
+
+# === Streamlit UI setup ===
+# This is the main title: Becker CPA Question Downloader 
 st.title("📘 Becker CPA Question Downloader")
 
+# These are the main inputs fields:  
+# st.text_input(label, value="", max_chars= , type=""...) 
 login_url = st.text_input("🔗 Becker MCQ URL", value="https://cpa.becker.com/module/F-01-01/V1.2/mcqs/session?context=homework&filter=0")
 username = st.text_input("📧 Becker Username (Email)", value="", type="default")
 password = st.text_input("🔒 Becker Password", value="", type="password")
 question_count = st.number_input("🔢 Number of Questions", min_value=1, max_value=100, value=10)
-output_folder = st.text_input("📂 Output Folder (e.g., C:/Users/YourName/Desktop)", value=os.path.expanduser("~/Desktop"))
+output_folder = st.text_input("📂 Output Folder (e.g., C:/Users/YourName/Desktop)", value="")
 
 start_button = st.button("Start Download")
 
 if start_button:
     if not os.path.exists(output_folder):
-        st.error("❌ The specified output folder does not exist. Please create it first.")
+        st.error("❌ The specified output folder does not exist.")
     else:
         with st.spinner("Running automation..."):
             try:
