@@ -41,9 +41,11 @@ output_folder = st.text_input("📂 Output Folder (e.g., C:/Users/YourName/Deskt
 start_button = st.button("Start Download")
 
 if start_button:
-    if not os.path.exists(output_folder):
+    cleaned_path = os.path.normpath(output_folder.strip().strip('"'))
+    if not os.path.exists(cleaned_path):
         st.error("❌ The specified output folder does not exist.")
     else:
+        st.success(f"✅ Folder exists: {cleaned_path}")
         with st.spinner("Running automation..."):
             try:
                 # Setup headless browser
