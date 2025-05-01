@@ -1,7 +1,7 @@
 # === This code allows you to get a pdf to desktop CPA Questions folder from CPA beckers pratice questions === 
 
-!pip install selenium pillow fpdf
-!pip install Pillow
+pip install selenium pillow fpdf
+pip install Pillow
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
