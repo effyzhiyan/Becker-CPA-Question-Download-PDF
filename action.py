@@ -36,7 +36,7 @@ login_url = st.text_input("🔗 Becker MCQ URL", value="")
 username = st.text_input("📧 Becker Username (Email)", value="", type="default")
 password = st.text_input("🔒 Becker Password", value="", type="password")
 question_count = st.number_input("🔢 Number of Questions", min_value=1, max_value=100, value=10)
-output_folder = st.text_input("📂 Output Folder (e.g., C:/Users/YourName/Desktop)", value="r"C:\Users\eyu\OneDrive - Houlihan Lokey\Desktop\CPA Questions"")
+output_folder = st.text_input("📂 Output Folder (e.g., C:/Users/YourName/Desktop)", value=r"C:\Users\eyu\OneDrive - Houlihan Lokey\Desktop\CPA Questions")
 
 start_button = st.button("Start Download")
 
