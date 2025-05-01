@@ -32,7 +32,7 @@ st.title("📘 Becker CPA Question Downloader")
 
 # These are the main inputs fields:  
 # st.text_input(label, value="", max_chars= , type=""...) 
-login_url = st.text_input("🔗 Becker MCQ URL", value="https://cpa.becker.com/module/F-01-01/V1.2/mcqs/session?context=homework&filter=0")
+login_url = st.text_input("🔗 Becker MCQ URL", value="")
 username = st.text_input("📧 Becker Username (Email)", value="", type="default")
 password = st.text_input("🔒 Becker Password", value="", type="password")
 question_count = st.number_input("🔢 Number of Questions", min_value=1, max_value=100, value=10)
